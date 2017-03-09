@@ -8,8 +8,10 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.ViewSwitcher;
+
 import com.djjie.mvpluglib.MVPlug;
 import com.djjie.mvpluglib.MVPlugConfig;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Locale;
@@ -34,6 +36,7 @@ public class IndicatedViewManager {
 
     private final String[] mSupportedViews = new String[]{"linearlayout","relativelayout", "framelayout", "scrollview", "recyclerview", "viewgroup"};
     private final MVPlugConfig mvPlugConfig;
+    private ViewGroup group;
 
     public IndicatedViewManager(Activity activity, View targetView){
         this.mContext 		= activity.getApplicationContext();
@@ -58,15 +61,15 @@ public class IndicatedViewManager {
     }
 
     private void initializeViewContainer(){
+        group = (ViewGroup)mTargetView.getParent();
         initViews();
         mSwitcher = new ViewSwitcher(mContext);
         ViewSwitcher.LayoutParams params = new ViewSwitcher.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         mSwitcher.setLayoutParams(params);
 
-        ViewGroup group = (ViewGroup)mTargetView.getParent();
         int index = 0;
         Clonner target= new Clonner(mTargetView);
-        if(group!=null){
+        if(group !=null){
             index = group.indexOfChild(mTargetView);
             group.removeView(mTargetView);
 
@@ -75,7 +78,7 @@ public class IndicatedViewManager {
         mSwitcher.addView(target.getmView(),1);
         mSwitcher.setDisplayedChild(1);
 
-        if(group!=null){
+        if(group !=null){
             group.addView(mSwitcher,index);
         }else{
             ((Activity)mContext).setContentView(mSwitcher);
@@ -115,7 +118,7 @@ public class IndicatedViewManager {
     }
 
     private View initView(int layout, String tag){
-        View view = mInflater.inflate(layout, null,false);
+        View view = mInflater.inflate(layout, group,false);
 
         view.setTag(tag);
         view.setVisibility(View.GONE);
@@ -123,7 +126,12 @@ public class IndicatedViewManager {
         View buttonView = view.findViewById(mvPlugConfig.getExceptionViewBtnResId());
         if(buttonView!=null)
             buttonView.setOnClickListener(this.onExceptionBtnClicked);
-
+        if (tag == TAG_LOADING_CONTENT){
+            ViewGroup.LayoutParams params = group.getLayoutParams();
+            params.width = params.MATCH_PARENT;
+            params.height = params.MATCH_PARENT;
+            view.setLayoutParams(params);
+        }
         return view;
     }
 

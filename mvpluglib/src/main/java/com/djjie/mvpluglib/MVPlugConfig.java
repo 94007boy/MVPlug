@@ -2,8 +2,10 @@ package com.djjie.mvpluglib;
 
 import android.content.Context;
 import android.text.TextUtils;
+
 import com.djjie.mvpluglib.model.ResConverterFactory;
 import com.djjie.mvpluglib.model.ResponseModel;
+
 import retrofit2.Converter;
 
 /**

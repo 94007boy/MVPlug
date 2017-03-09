@@ -5,10 +5,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import com.djjie.mvpluglib.MVPlug;
 import com.djjie.mvpluglib.MVPlugConfig;
 import com.djjie.mvpluglib.view.MVPlugViewHolder;
 import com.orhanobut.logger.Logger;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;

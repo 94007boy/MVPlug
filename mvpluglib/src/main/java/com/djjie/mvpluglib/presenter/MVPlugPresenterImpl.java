@@ -19,7 +19,7 @@ import rx.subscriptions.CompositeSubscription;
  * Created by shf2 on 2016/12/20.
  */
 
-public class MVPlugPresenterImpl implements MVPlugPresenter{
+public class MVPlugPresenterImpl implements MVPlugPresenter {
 
     protected CompositeSubscription mSubscriptions;
     private MVPlugView view;
@@ -106,8 +106,8 @@ public class MVPlugPresenterImpl implements MVPlugPresenter{
 
         @Override
         public void onNext(T t) {
-            view.dismissLoadingView();
             onResult(t);
+            view.dismissLoadingView();
         }
 
     }

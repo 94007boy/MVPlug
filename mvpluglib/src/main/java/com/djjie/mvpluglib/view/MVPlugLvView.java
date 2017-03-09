@@ -8,7 +8,7 @@ public interface MVPlugLvView<T,M> extends MVPlugView<T> {
 
     void onLoadMore(int tabId, long pageFlag);
     void onLoadMoreError();
-    void setAdapter(M adapter);
-    void setAdapter(int tabId, M adapter);
-
+    void enableLoadMore(M adapter);
+    void enableLoadMore(int tabId, M adapter);
+    void setCanBeLoad(boolean canBeLoad);
 }

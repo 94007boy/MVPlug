@@ -7,8 +7,10 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.View;
 import android.widget.Toast;
+
 import com.djjie.mvpluglib.model.OnMVPlugViewInit;
 import com.djjie.mvpluglib.presenter.MVPlugPresenter;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,7 +24,7 @@ public class MVPlugViewImpl<T extends MVPlugPresenter> extends Fragment implemen
     protected Context context;
     protected T presenter;
     private Activity activity;
-    protected int currenTabIndex;
+    protected int currenTabIndex = 0;
     protected Map<Integer,Long> pageFlags = new HashMap<>();
 
     @Override

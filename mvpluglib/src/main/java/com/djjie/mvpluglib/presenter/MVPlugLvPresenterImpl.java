@@ -57,6 +57,7 @@ public class MVPlugLvPresenterImpl extends MVPlugPresenterImpl implements MVPlug
             }else {
                 view.onLoadMoreError();
             }
+            view.setCanBeLoad(true);
         }
 
         @Override
@@ -65,6 +66,7 @@ public class MVPlugLvPresenterImpl extends MVPlugPresenterImpl implements MVPlug
                 view.dismissLoadingView();
             }
             onResult(t,isRefresh);
+            view.setCanBeLoad(true);
         }
     }
 }

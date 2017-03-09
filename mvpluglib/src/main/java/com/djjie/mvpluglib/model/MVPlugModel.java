@@ -1,9 +1,13 @@
 package com.djjie.mvpluglib.model;
+
 import android.text.TextUtils;
+
 import com.djjie.mvpluglib.MVPlug;
 import com.djjie.mvpluglib.MVPlugConfig;
 import com.orhanobut.logger.Logger;
+
 import java.util.concurrent.TimeUnit;
+
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;

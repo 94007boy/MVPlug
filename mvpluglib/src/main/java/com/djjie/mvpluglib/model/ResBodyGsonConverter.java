@@ -44,16 +44,17 @@ public class ResBodyGsonConverter<T> implements Converter<ResponseBody, T> {
                 decodeRes = encodeRes;
             }
             Logger.d("decodeRes = "+decodeRes);
-            Class<? extends ResponseModel> clz = mvPlugConfig.getResModelClass();
-            ResponseModel resultResponse = gson.fromJson(decodeRes, clz);
-
-            //扒第二层皮
-            if (resultResponse.getResponseCode() == MVPlug.getInstance().getConfiguration().RES_SUCCESS_CODE()){
-                //扒第三层皮
-                return gson.fromJson(decodeRes, type);
-            } else {
-                throw new MVPlugFailReason(resultResponse.getResponseMsg(),resultResponse.getResponseCode());
-            }
+            return gson.fromJson(decodeRes, type);
+////            Class<? extends ResponseModel> clz = mvPlugConfig.getResModelClass();
+//            T resultResponse = gson.fromJson(decodeRes, type);
+//
+//            //扒第二层皮
+//            if (resultResponse.getResponseCode() == MVPlug.getInstance().getConfiguration().RES_SUCCESS_CODE()){
+//                //扒第三层皮
+//                return gson.fromJson(decodeRes, type);
+//            } else {
+//                throw new MVPlugFailReason(resultResponse.getResponseMsg(),resultResponse.getResponseCode());
+//            }
         }
     }
 }
